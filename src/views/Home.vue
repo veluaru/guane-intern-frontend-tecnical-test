@@ -1,18 +1,35 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>TODO-LIST guane interns</h1>
+    <b-button class="marginB" @click="createTodo">New Task</b-button>
+    <CardList/>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import CardList from '../components/CardList';
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    CardList
+  },
+  methods: {
+    createTodo(){
+      this.$router.push({ name: "CreateCard"});
+    }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+
+h1 {
+  margin: 3rem;
+}
+
+.marginB{
+  margin-bottom:2rem
+}
+
+</style>
