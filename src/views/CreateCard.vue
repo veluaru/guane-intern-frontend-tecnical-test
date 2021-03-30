@@ -1,10 +1,12 @@
 <template>
   <div>
+    <LoadingDialog  />
     <h1>Create TODO</h1>
     <div class="bordeExterno">
       <b-col>
         <b-row>
           <b-img class="imageSize" :src="image" fluid></b-img>
+
         </b-row>
         <b-row>
           <p>Task title</p>
@@ -52,9 +54,13 @@
 
 <script>
 import imageServices from "../services/imageServices";
+import LoadingDialog from "../components/LoadingDialog";
 
 export default {
   name: "CreateCard",
+  components: {
+      LoadingDialog
+  },
   data() {
     return {
       title: "",
@@ -74,14 +80,23 @@ export default {
             image: this.image
         }
         this.$store.state.todo = data
-        this.$store.dispatch('addTodoAction')    
+        this.$store.dispatch('addTodoAction')   
+        alert("Todo task created")
+        this.title = ""
+        this.date = ""
+        this.description = ""
+        this.randomImage()
     },
     home(){
         this.$router.push({ name: "Home"})
     },
+    async randomImage() {
+
+        this.image = await imageServices.getImage();
+    }
   },
   async beforeMount() {
-    this.image = await imageServices.getImage();
+    this.randomImage();
   },
 };
 </script>
