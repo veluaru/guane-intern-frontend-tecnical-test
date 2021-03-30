@@ -35,7 +35,8 @@ export default {
 <style lang="scss" scoped>
 
 h1 {
-  margin: 3rem;
+  margin: 2rem;
+  font-family: 'Trebuchet MS', sans-serif;
 }
 
 .marginB{
