@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <b-card-group deck>
-      <b-row class="marginGrid" v-bind:key="item.id" v-for="item in data">
+  <div class="marginSides">
+    <b-card-group>
+      <b-row class="marginGrid" v-bind:key="item.id" v-for="item in data" >
         <b-col>
           <Card v-bind:item="item" />
         </b-col>
@@ -25,17 +25,15 @@ export default {
   },
   beforeMount() {
     this.data = this.$store.getters.getTodos.sort(function (a, b) {
-      let dateA = Date.parse(a.date)
-      let dateB = Date.parse(b.date)
-      let dates = dateB - dateA
-      let isImportant =  b.important - a.important
-      return  dates + isImportant;
+      let dateA = Date.parse(a.date);
+      let dateB = Date.parse(b.date);
+      let dates = dateB - dateA;
+      let isImportant = b.important - a.important;
+      return dates + isImportant;
     });
     this.data = this.$store.getters.getTodos.sort(function (a, b) {
-
-      return  b.important - a.important;
+      return b.important - a.important;
     });
-
   },
 };
 </script>
@@ -44,6 +42,10 @@ export default {
 .marginGrid {
   margin: auto;
   margin-bottom: 2rem;
+}
+.marginSides {
+  margin-left: 3rem;
+  margin-right: 3rem;
 }
 </style>
 
