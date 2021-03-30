@@ -8,6 +8,7 @@
 
 <script>
 import CardList from '../components/CardList';
+import json from '../json/defaultData'
 
 export default {
   name: 'Home',
@@ -18,6 +19,15 @@ export default {
     createTodo(){
       this.$router.push({ name: "CreateCard"});
     }
+  },
+  beforeCreate(){
+   if(this.$store.getters.getTodos.length==0){
+     json.data.forEach(element => {
+      this.$store.state.todo = element
+      this.$store.dispatch('addTodoAction')    
+     });
+
+   } 
   }
 }
 </script>

@@ -24,7 +24,18 @@ export default {
     };
   },
   beforeMount() {
-    this.data = this.$store.getters.getTodos;
+    this.data = this.$store.getters.getTodos.sort(function (a, b) {
+      let dateA = Date.parse(a.date)
+      let dateB = Date.parse(b.date)
+      let dates = dateB - dateA
+      let isImportant =  b.important - a.important
+      return  dates + isImportant;
+    });
+    this.data = this.$store.getters.getTodos.sort(function (a, b) {
+
+      return  b.important - a.important;
+    });
+
   },
 };
 </script>

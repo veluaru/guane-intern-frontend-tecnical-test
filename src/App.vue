@@ -2,9 +2,6 @@
   <div id="app">
     <div>
       <Navbar/>
-        <!-- <b-navbar variant="dark" type="dark">
-          <b-navbar-brand>Guane Enterprises</b-navbar-brand>
-        </b-navbar> -->
     </div>
     <router-view />
   </div>

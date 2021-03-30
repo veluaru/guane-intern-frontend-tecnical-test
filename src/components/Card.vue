@@ -1,5 +1,5 @@
 <template>
-    <b-card :title="item.title" :img-src="item.image" img-alt="Image" img-top class="cardSize">
+    <b-card :bg-variant="cardColor" :title="item.title" :img-src="item.image" img-top class="cardSize" img-height=280 >
         <b-card-sub-title class="mb-2">{{item.date}}</b-card-sub-title>
         <b-card-text>
         {{item.description}}
@@ -12,6 +12,15 @@
 export default {
   name: "Card",
   props: ["item"],
+    data() {
+    return {
+        cardColor:"light"
+    }},
+  mounted(){
+      if(this.item.important){
+          this.cardColor="warning"
+      }
+  }
 };
 </script>
 
@@ -19,6 +28,7 @@ export default {
 
 .cardSize {
     max-width: 17rem;
+    min-width: 16rem;
     margin:auto
 }
 
